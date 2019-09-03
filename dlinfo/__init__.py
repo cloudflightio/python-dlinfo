@@ -26,12 +26,12 @@ _DLINFO.restype = ctypes.c_int
 class DLInfo:
 
     def __init__(self, cdll: ctypes.CDLL):
-        self._linkmap = ctypes.c_void_p()
+        _linkmap = ctypes.c_void_p()
         # pylint: disable=protected-access
-        if _DLINFO(cdll._handle, _RTLD_DI_LINKMAP, ctypes.byref(self._linkmap)) != 0:
+        if _DLINFO(cdll._handle, _RTLD_DI_LINKMAP, ctypes.byref(_linkmap)) != 0:
             raise Exception('dlinfo on {} failed'.format(cdll._name))
+        self._linkmap = ctypes.cast(_linkmap, ctypes.POINTER(_LinkMap))
 
     @property
     def path(self) -> str:
-        return ctypes.cast(self._linkmap, ctypes.POINTER(_LinkMap)).contents.l_name \
-            .decode(sys.getdefaultencoding())
+        return self._linkmap.contents.l_name.decode(sys.getdefaultencoding())
