@@ -10,7 +10,6 @@ setuptools.setup(
     tests_require=[
         'pytest',
         'pytest-cov',
-        'pylint',
         # https://github.com/PyCQA/pylint/issues/2694
         'pylint>=2.3.0',
     ],
