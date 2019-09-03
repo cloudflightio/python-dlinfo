@@ -6,11 +6,11 @@ Python wrapper for libc's dlinfo
 Install
 -------
 
-```sh
-pip install dlinfo
-# or
-pipenv install dlinfo
-```
+.. code:: sh
+
+   pip install dlinfo
+   # or
+   pipenv install dlinfo
 
 Usage
 -----
