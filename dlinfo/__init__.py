@@ -25,6 +25,13 @@ _DLINFO.restype = ctypes.c_int
 
 class DLInfo:
 
+    """
+    >>> lib = ctypes.cdll.LoadLibrary(ctypes.util.find_library('c'))
+    >>> dlinfo = DLInfo(lib)
+    >>> dlinfo.path
+    '/lib/x86_64-linux-gnu/libc.so.6'
+    """
+
     def __init__(self, cdll: ctypes.CDLL):
         _linkmap = ctypes.c_void_p()
         # pylint: disable=protected-access

@@ -24,7 +24,7 @@ linting:
 tests:
   stage: test
   script:
-  - pipenv run pytest --cov dlinfo --cov-report term-missing
+  - pipenv run pytest --doctest-modules --cov dlinfo --cov-report term-missing
 
 pack:
   stage: pack
