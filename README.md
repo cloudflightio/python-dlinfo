@@ -2,6 +2,14 @@
 
 Python wrapper for libc's dlinfo
 
+# install
+
+```sh
+pip install dlinfo
+# or
+pipenv install dlinfo
+```
+
 # usage
 
 ```python
