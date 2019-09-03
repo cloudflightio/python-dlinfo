@@ -1,0 +1,4 @@
+# https://pytest-cov.readthedocs.io/en/stable/config.html
+
+[report]
+fail_under = 100
