@@ -30,6 +30,7 @@ pack:
   stage: pack
   script:
   - python3 setup.py sdist
+  - apt-get install --yes python3-wheel
   - python3 setup.py bdist_wheel
   artifacts:
     paths:
