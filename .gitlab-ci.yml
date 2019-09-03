@@ -1,0 +1,46 @@
+image: docker-registry-default.apps.openshift.grasp-cloud.com/grasp-cloud/ubuntu-base:18.04
+
+stages:
+- test
+- pack
+- deploy
+
+variables:
+  LC_ALL: C.UTF-8
+  LANG: C.UTF-8
+
+before_script:
+- apt-get update
+- apt-get install --yes
+  python3
+- pip3 install pipenv
+- pipenv sync --dev
+
+linting:
+  stage: test
+  script:
+  - pipenv run pylint dlinfo tests/*.py
+
+tests:
+  stage: test
+  script:
+  - pipenv run pytest --doctest-modules --cov dlinfo --cov-report term-missing
+
+pack:
+  stage: pack
+  script:
+  - python3 setup.py sdist
+  - apt-get install --yes python3-wheel
+  - python3 setup.py bdist_wheel
+  artifacts:
+    paths:
+    - dist/
+
+python-push:
+  stage: deploy
+  only: [tags]
+  script:
+  - apt-get install --yes twine
+  - twine upload dist/*
+
+# https://docs.gitlab.com/ee/ci/yaml/
