@@ -19,7 +19,7 @@ before_script:
 linting:
   stage: test
   script:
-  - pipenv run pylint dlinfo
+  - pipenv run pylint dlinfo tests/*.py
 
 tests:
   stage: test

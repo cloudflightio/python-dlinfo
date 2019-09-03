@@ -27,6 +27,7 @@ class DLInfo:
 
     def __init__(self, cdll: ctypes.CDLL):
         self._linkmap = ctypes.c_void_p()
+        # pylint: disable=protected-access
         if _DLINFO(cdll._handle, _RTLD_DI_LINKMAP, ctypes.byref(self._linkmap)) != 0:
             raise Exception('dlinfo on {} failed'.format(cdll._name))
 
