@@ -15,11 +15,11 @@ def dyld_find_mock(name):
 @pytest.fixture
 def dlinfo_module_mac() -> types.ModuleType:
     with unittest.mock.patch('sys.platform', 'darwin'):
-        dyld_module = unittest.mock.Mock()
+        dyld_module = unittest.mock.MagicMock()
         dyld_module.dyld_find = dyld_find_mock
         with unittest.mock.patch.dict('sys.modules',
-                                      {'ctypes': unittest.mock.Mock(),
-                                       'ctypes.macholib': unittest.mock.Mock(),
+                                      {'ctypes': unittest.mock.MagicMock(),
+                                       'ctypes.macholib': unittest.mock.MagicMock(),
                                        'ctypes.macholib.dyld': dyld_module}):
             dlinfo_module = __import__('dlinfo')
             assert dlinfo_module.DLInfo.__module__ == 'dlinfo._macosx'
