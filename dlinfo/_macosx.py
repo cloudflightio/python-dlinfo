@@ -1,6 +1,6 @@
 import ctypes
 # pylint: disable=import-error,no-name-in-module
-from ctypes.macholib.dylib import dyld_find
+from ctypes.macholib.dyld import dyld_find
 
 
 class DLInfo:
