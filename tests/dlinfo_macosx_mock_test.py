@@ -17,7 +17,10 @@ def dlinfo_module_mac() -> types.ModuleType:
     with unittest.mock.patch('sys.platform', 'darwin'):
         dyld_module = unittest.mock.Mock()
         dyld_module.dyld_find = dyld_find_mock
-        with unittest.mock.patch.dict('sys.modules', {'ctypes.macholib.dyld': dyld_module}):
+        with unittest.mock.patch.dict('sys.modules',
+                                      {'ctypes': unittest.mock.Mock(),
+                                       'ctypes.macholib': unittest.mock.Mock(),
+                                       'ctypes.macholib.dyld': dyld_module}):
             dlinfo_module = __import__('dlinfo')
             assert dlinfo_module.DLInfo.__module__ == 'dlinfo._macosx'
             return dlinfo_module
