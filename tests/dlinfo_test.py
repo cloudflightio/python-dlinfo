@@ -9,7 +9,7 @@ from dlinfo import DLInfo
 @pytest.mark.parametrize('lib_name', [
     'c',
     'dl',
-    'grasp_python',
+    'python_grasp',
 ])
 def test_dlinfo_path(lib_name):
     lib_filename = ctypes.util.find_library(lib_name)
