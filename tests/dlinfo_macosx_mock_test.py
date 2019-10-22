@@ -1,7 +1,6 @@
 import ctypes
 import ctypes.util
 import os
-import sys
 import types
 import unittest.mock
 
@@ -16,11 +15,12 @@ def dyld_find_mock(name):
 @pytest.fixture
 def dlinfo_module_mac() -> types.ModuleType:
     with unittest.mock.patch('sys.platform', 'darwin'):
-        sys.modules['ctypes.macholib.dyld'] = unittest.mock.Mock()
-        sys.modules['ctypes.macholib.dyld'].dyld_find = dyld_find_mock
-        dlinfo_module = __import__('dlinfo')
-        assert dlinfo_module.DLInfo.__module__ == 'dlinfo._macosx'
-        return dlinfo_module
+        dyld_module = unittest.mock.Mock()
+        dyld_module.dyld_find = dyld_find_mock
+        with unittest.mock.patch.dict('sys.modules', {'ctypes.macholib.dyld': dyld_module}):
+            dlinfo_module = __import__('dlinfo')
+            assert dlinfo_module.DLInfo.__module__ == 'dlinfo._macosx'
+            return dlinfo_module
 
 
 @pytest.mark.parametrize('lib_name', [
