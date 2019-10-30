@@ -1,3 +1,5 @@
+__all__ = ['DLInfo']
+
 import sys
 
 if sys.platform == 'darwin':

@@ -1,16 +1,18 @@
 import builtins
 import ctypes
 import ctypes.util
+import importlib
 import os
 import types
 import unittest.mock
 
 import pytest
 
+import dlinfo
+
 BUILTIN_IMPORT = builtins.__import__
 
 
-# pytest: disable=redefined-outer-name
 def dyld_find_mock(name):
     # https://github.com/python/cpython/blob/master/Lib/ctypes/macholib/dyld.py#L116
     return os.path.join(os.sep, 'lib', name)
@@ -24,11 +26,12 @@ def import_mock(name, *args):
     return BUILTIN_IMPORT(name, *args)
 
 
+# pylint: disable=redefined-outer-name
 @pytest.fixture
 def dlinfo_module_mac() -> types.ModuleType:
     with unittest.mock.patch('sys.platform', 'darwin'):
         with unittest.mock.patch('builtins.__import__', import_mock):
-            dlinfo_module = __import__('dlinfo')
+            dlinfo_module = importlib.reload(dlinfo)
     assert dlinfo_module.DLInfo.__module__ == 'dlinfo._macosx'
     return dlinfo_module
 
@@ -44,6 +47,6 @@ def test_dlinfo_path(dlinfo_module_mac, lib_name):
     if not lib_filename:
         pytest.xfail('lib{} not found'.format(lib_name))
     lib = ctypes.cdll.LoadLibrary(lib_filename)
-    dlinfo = dlinfo_module_mac.DLInfo(lib)
-    assert lib_filename == os.path.basename(dlinfo.path)
-    assert os.path.join(os.sep, 'lib') == os.path.dirname(dlinfo.path)
+    lib_info = dlinfo_module_mac.DLInfo(lib)
+    assert lib_filename == os.path.basename(lib_info.path)
+    assert os.path.join(os.sep, 'lib') == os.path.dirname(lib_info.path)
