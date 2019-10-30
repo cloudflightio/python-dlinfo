@@ -10,6 +10,7 @@ import pytest
 BUILTIN_IMPORT = builtins.__import__
 
 
+# pytest: disable=redefined-outer-name
 def dyld_find_mock(name):
     # https://github.com/python/cpython/blob/master/Lib/ctypes/macholib/dyld.py#L116
     return os.path.join(os.sep, 'lib', name)
@@ -33,6 +34,7 @@ def dlinfo_module_mac() -> types.ModuleType:
 
 
 @pytest.mark.parametrize('lib_name', [
+    'SegFault',
     'c',
     'dl',
     'python_grasp',
