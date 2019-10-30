@@ -1,4 +1,3 @@
-import builtins
 import ctypes
 import ctypes.util
 import importlib
@@ -10,28 +9,12 @@ import pytest
 
 import dlinfo
 
-BUILTIN_IMPORT = builtins.__import__
-
-
-def dyld_find_mock(name):
-    # https://github.com/python/cpython/blob/master/Lib/ctypes/macholib/dyld.py#L116
-    return os.path.join(os.sep, 'lib', name)
-
-
-def import_mock(name, *args):
-    if name == 'ctypes.macholib.dyld':
-        dyld_module = unittest.mock.MagicMock()
-        dyld_module.dyld_find = dyld_find_mock
-        return dyld_module
-    return BUILTIN_IMPORT(name, *args)
-
 
 # pylint: disable=redefined-outer-name
 @pytest.fixture
 def dlinfo_module_mac() -> types.ModuleType:
     with unittest.mock.patch('sys.platform', 'darwin'):
-        with unittest.mock.patch('builtins.__import__', import_mock):
-            dlinfo_module = importlib.reload(dlinfo)
+        dlinfo_module = importlib.reload(dlinfo)
     assert dlinfo_module.DLInfo.__module__ == 'dlinfo._macosx'
     return dlinfo_module
 
@@ -48,5 +31,8 @@ def test_dlinfo_path(dlinfo_module_mac, lib_name):
         pytest.xfail('lib{} not found'.format(lib_name))
     lib = ctypes.cdll.LoadLibrary(lib_filename)
     lib_info = dlinfo_module_mac.DLInfo(lib)
-    assert lib_filename == os.path.basename(lib_info.path)
-    assert os.path.join(os.sep, 'lib') == os.path.dirname(lib_info.path)
+    if os.path.exists(lib_info.path): # mac
+        assert os.path.isabs(lib_info.path)
+        assert lib_filename == os.path.basename(lib_info.path)
+    else: # dyld_find mock
+        assert lib_info.path == '/usr/lib/lib{}.dylib'.format(lib_name)
