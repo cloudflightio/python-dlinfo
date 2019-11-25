@@ -6,13 +6,12 @@ with open('README.rst', 'r') as readme:
 setuptools.setup(
     name='dlinfo',
     use_scm_version=True,
-    author='Fabian Peter Hammerle',
-    author_email='fabianpeter.hammerle@catalysts.cc',
     maintainer='Catalysts Space',
     maintainer_email='space@catalysts.cc',
     description="Python wrapper for libc\'s dlinfo and dyld_find on Mac",
     long_description=LONG_DESCRIPTION,
-    url='https://code.grasp-open.com/grasp-tools/python-dlinfo',
+    license="MIT",
+    url='https://github.com/Catalysts/python-dlinfo',
     packages=setuptools.find_packages(),
     setup_requires=[
         'setuptools_scm',
