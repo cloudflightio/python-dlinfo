@@ -11,7 +11,7 @@ setuptools.setup(
     description="Python wrapper for libc\'s dlinfo and dyld_find on Mac",
     long_description=LONG_DESCRIPTION,
     license="MIT",
-    url='https://github.com/Catalysts/python-dlinfo',
+    url='https://github.com/cloudflightio/python-dlinfo',
     packages=setuptools.find_packages(),
     setup_requires=[
         'setuptools_scm',
