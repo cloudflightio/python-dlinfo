@@ -7,7 +7,7 @@ setuptools.setup(
     name='dlinfo',
     use_scm_version=True,
     maintainer='Cloudflight Space',
-    maintainer_email='space@cloudflight.io',
+    maintainer_email='aerospace@cloudflight.io',
     description="Python wrapper for libc\'s dlinfo and dyld_find on Mac",
     long_description=LONG_DESCRIPTION,
     license="MIT",
