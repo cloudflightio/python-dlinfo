@@ -6,8 +6,8 @@ with open('README.rst', 'r') as readme:
 setuptools.setup(
     name='dlinfo',
     use_scm_version=True,
-    maintainer='Catalysts Space',
-    maintainer_email='space@catalysts.cc',
+    maintainer='Cloudflight Space',
+    maintainer_email='space@cloudflight.io',
     description="Python wrapper for libc\'s dlinfo and dyld_find on Mac",
     long_description=LONG_DESCRIPTION,
     license="MIT",
@@ -16,13 +16,17 @@ setuptools.setup(
     setup_requires=[
         'setuptools_scm',
     ],
-    tests_require=[
-        'pytest',
-        'pytest-cov',
-        # https://github.com/PyCQA/pylint/issues/2694
-        'pylint>=2.3.0',
-    ],
+    tests_require=['pytest'],
     classifiers=[
+        # https://pypi.org/classifiers/
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        # see .github/workflows/python.yml
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         'Operating System :: MacOS :: MacOS X',
         'Operating System :: POSIX :: Linux',
     ],
