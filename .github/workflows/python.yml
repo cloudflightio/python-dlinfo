@@ -24,7 +24,7 @@ jobs:
       fail-fast: false
     steps:
     - uses: actions/checkout@v2.3.4
-    - uses: actions/setup-python@v1
+    - uses: actions/setup-python@v2.2.2
       with:
         python-version: ${{ matrix.python-version }}
     - run: pip install --upgrade pipenv==2020.8.13
