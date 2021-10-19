@@ -28,11 +28,11 @@ def dlinfo_module_mac() -> types.ModuleType:
 def test_dlinfo_path(dlinfo_module_mac, lib_name):
     lib_filename = ctypes.util.find_library(lib_name)
     if not lib_filename:
-        pytest.xfail('lib{} not found'.format(lib_name))
+        pytest.xfail(f"lib{lib_name} not found")
     lib = ctypes.cdll.LoadLibrary(lib_filename)
     lib_info = dlinfo_module_mac.DLInfo(lib)
     if os.path.exists(lib_info.path): # mac
         assert os.path.isabs(lib_info.path)
         assert lib_filename == os.path.basename(lib_info.path)
     else: # dyld_find mock
-        assert lib_info.path == '/usr/lib/lib{}.dylib'.format(lib_name)
+        assert lib_info.path == f"/usr/lib/lib{lib_name}.dylib"
