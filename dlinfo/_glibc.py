@@ -36,7 +36,7 @@ class DLInfo:
         _linkmap = ctypes.c_void_p()
         # pylint: disable=protected-access
         if _DLINFO(cdll._handle, _RTLD_DI_LINKMAP, ctypes.byref(_linkmap)) != 0:  # pragma: no cover
-            raise Exception('dlinfo on {} failed'.format(cdll._name))
+            raise Exception(f"dlinfo on {cdll._name} failed")
         self._linkmap = ctypes.cast(_linkmap, ctypes.POINTER(_LinkMap))
 
     @property

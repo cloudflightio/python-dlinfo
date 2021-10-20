@@ -13,21 +13,20 @@ setuptools.setup(
     license="MIT",
     url='https://github.com/cloudflightio/python-dlinfo',
     packages=setuptools.find_packages(),
-    setup_requires=[
-        'setuptools_scm',
-    ],
-    tests_require=['pytest'],
+    python_requires=">=3.6",  # f-strings
+    setup_requires=["setuptools_scm"],
+    tests_require=["pytest"],
     classifiers=[
         # https://pypi.org/classifiers/
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         # see .github/workflows/python.yml
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
-        'Operating System :: MacOS :: MacOS X',
-        'Operating System :: POSIX :: Linux',
+        "Programming Language :: Python :: 3.10",
+        "Operating System :: MacOS :: MacOS X",
+        "Operating System :: POSIX :: Linux",
     ],
 )
