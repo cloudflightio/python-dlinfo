@@ -13,6 +13,11 @@ pylint = "*"
 
 # python<3.8 compatibility
 importlib-metadata = "*"
+# workaround for python<3.10
+# >    File "[...]/python3.9/site-packages/astroid/decorators.py", line 36, in <module>
+# >     from typing_extensions import ParamSpec
+# > ModuleNotFoundError: No module named 'typing_extensions'
+typing_extensions = {markers = "python_version < '3.10'"}
 
 [requires]
 python_version = "3"
