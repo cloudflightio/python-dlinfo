@@ -12,7 +12,8 @@ pytest-cov = "*"
 pylint = "*"
 
 # python<3.8 compatibility
-importlib-metadata = "*"
+# importlib-metadata v4.9 dropped support for python3.6
+importlib-metadata = "<4.9"
 # workaround for python<3.10
 # >    File "[...]/python3.9/site-packages/astroid/decorators.py", line 36, in <module>
 # >     from typing_extensions import ParamSpec
