@@ -19,6 +19,8 @@ importlib-metadata = "<4.9"
 # >     from typing_extensions import ParamSpec
 # > ModuleNotFoundError: No module named 'typing_extensions'
 typing_extensions = {markers = "python_version < '3.10'"}
+# tomli v2 dropped support for python3.6
+tomli = "<2"
 
 [requires]
 python_version = "3"
