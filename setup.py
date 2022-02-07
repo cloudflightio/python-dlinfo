@@ -13,7 +13,7 @@ setuptools.setup(
     license="MIT",
     url='https://github.com/cloudflightio/python-dlinfo',
     packages=setuptools.find_packages(),
-    python_requires=">=3.6",  # f-strings
+    python_requires=">=3.7",  # >=3.6 for f-strings, <3.7 untested
     setup_requires=["setuptools_scm"],
     tests_require=["pytest"],
     classifiers=[
@@ -21,7 +21,6 @@ setuptools.setup(
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         # see .github/workflows/python.yml
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",

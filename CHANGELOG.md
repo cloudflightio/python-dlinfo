@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Removed
-- compatibility with `python3.5`
+- compatibility with `python3.5` & `python3.6` (reached end-of-life)
 
 ## [1.2.1] - 2021-04-21 
 ### Fixed
