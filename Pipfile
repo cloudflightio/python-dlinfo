@@ -15,6 +15,11 @@ pytest-cov = "*"
 # > File "[...]/python3.7/site-packages/_pytest/compat.py", line 56, in <module>
 # >  import importlib_metadata  # noqa: F401
 importlib-metadata = {markers = "python_version < '3.8'"}
+# > File "[...]/python3.7/site-packages/importlib_metadata/__init__.py", line 6, in <module>
+# >  import zipp
+zipp = {markers = "python_version < '3.8'"}
 
 [requires]
 python_version = "3"
+
+# Pipfile syntax: https://github.com/pypa/pipfile#pipfile
