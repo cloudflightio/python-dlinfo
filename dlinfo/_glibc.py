@@ -6,7 +6,7 @@ import sys
 _RTLD_DI_LINKMAP = 2
 
 
-class _LinkMap(ctypes.Structure):
+class _LinkMap(ctypes.Structure):  # pylint: disable=too-few-public-methods
     # link.h
     _fields_ = [
         ('l_addr', ctypes.c_void_p),
@@ -23,7 +23,7 @@ _DLINFO.argtypes = ctypes.c_void_p, ctypes.c_int, ctypes.c_void_p
 _DLINFO.restype = ctypes.c_int
 
 
-class DLInfo:
+class DLInfo:  # pylint: disable=too-few-public-methods
 
     """
     >>> lib = ctypes.cdll.LoadLibrary(ctypes.util.find_library('c'))

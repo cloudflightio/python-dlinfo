@@ -2,7 +2,8 @@ __all__ = ['DLInfo']
 
 import sys
 
+# pylint: disable=import-private-name; internal
 if sys.platform == 'darwin':
-    from ._macosx import DLInfo
+    from dlinfo._macosx import DLInfo
 else:
-    from ._glibc import DLInfo
+    from dlinfo._glibc import DLInfo

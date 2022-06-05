@@ -3,7 +3,7 @@ import ctypes
 from ctypes.macholib.dyld import dyld_find
 
 
-class DLInfo:
+class DLInfo:  # pylint: disable=too-few-public-methods
 
     """
     >>> lib = ctypes.cdll.LoadLibrary(ctypes.util.find_library('c'))
