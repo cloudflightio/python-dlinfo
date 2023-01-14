@@ -19,11 +19,6 @@ importlib-metadata = {markers = "python_version < '3.8'"}
 # >  import zipp
 zipp = {markers = "python_version < '3.8'"}
 
-# python<3.10 compatibility
-# >   File "[...]/python3.8/site-packages/astroid/decorators.py", line 36, in <module>
-# >     from typing_extensions import ParamSpec
-# > ModuleNotFoundError: No module named 'typing_extensions'
-typing-extensions = {markers = "python_version < '3.10'"}
 # >    File "[...]/lib/python3.10/site-packages/_pytest/_code/code.py", line 60, in <module>
 # >     from exceptiongroup import BaseExceptionGroup
 # > ModuleNotFoundError: No module named 'exceptiongroup'
