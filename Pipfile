@@ -29,6 +29,10 @@ exceptiongroup = {markers = "python_version < '3.11'"}
 # >     import tomli as tomllib
 # > ModuleNotFoundError: No module named 'tomli'
 tomli = {markers = "python_version < '3.11'"}
+# >   File "[...]/python3.9/site-packages/astroid/decorators.py", line 25, in <module>
+# >     from typing_extensions import ParamSpec
+# > ModuleNotFoundError: No module named 'typing_extensions'
+typing-extensions = "*"
 # >   File "[...]/lib/python3.10/site-packages/astroid/decorators.py", line 16, in <module>
 # >     import wrapt
 # > ModuleNotFoundError: No module named 'wrapt'
