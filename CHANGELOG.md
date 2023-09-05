@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Raise `RuntimeError` instead of `Exception` when libc's `dlinfo` function fails.
 
 ### Removed
-- Compatibility with `python3.5` & `python3.6` (reached end-of-life)
+- Compatibility with `python3.5`, `python3.6` & `python3.7`
+  (reached end-of-life)
 
 ## [1.2.1] - 2021-04-21 
 ### Fixed

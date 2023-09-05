@@ -11,16 +11,12 @@ pylint = "*"
 pytest = "*"
 pytest-cov = "*"
 
-# python3.7 compatibility
-# > File "[...]/python3.7/site-packages/_pytest/compat.py", line 56, in <module>
-# >  import importlib_metadata  # noqa: F401
-importlib-metadata = {markers = "python_version < '3.8'"}
-# https://github.com/PyCQA/isort/commit/47cedf3583f338e8ce9c906fc95c9fee6c57404d
-isort = "<5.12"
-# > File "[...]/python3.7/site-packages/importlib_metadata/__init__.py", line 6, in <module>
-# >  import zipp
-zipp = {markers = "python_version < '3.8'"}
-
+# python3.10 compatibility
+# >   File "[...]/lib/python3.10/site-packages/mypy/main.py", line 11, in <module>
+# >     from typing_extensions import Final, NoReturn
+# > ModuleNotFoundError: No module named 'typing_extensions'
+typing-extensions = {markers = ""}
+# python<3.11 compatibility
 # >    File "[...]/lib/python3.10/site-packages/_pytest/_code/code.py", line 60, in <module>
 # >     from exceptiongroup import BaseExceptionGroup
 # > ModuleNotFoundError: No module named 'exceptiongroup'
@@ -29,10 +25,6 @@ exceptiongroup = {markers = "python_version < '3.11'"}
 # >     import tomli as tomllib
 # > ModuleNotFoundError: No module named 'tomli'
 tomli = {markers = "python_version < '3.11'"}
-# >   File "[...]/python3.9/site-packages/astroid/decorators.py", line 25, in <module>
-# >     from typing_extensions import ParamSpec
-# > ModuleNotFoundError: No module named 'typing_extensions'
-typing-extensions = "*"
 # >   File "[...]/lib/python3.10/site-packages/astroid/decorators.py", line 16, in <module>
 # >     import wrapt
 # > ModuleNotFoundError: No module named 'wrapt'
@@ -41,7 +33,7 @@ wrapt = "*"
 # >   File "[...]/lib/python3.7/site-packages/pylint/lint/parallel.py", line 13, in <module>
 # >     import dill
 # > ModuleNotFoundError: No module named 'dill'
-dill = "*"
+dill = {markers = "python_version >= '0'"}
 
 [requires]
 python_version = "3"
