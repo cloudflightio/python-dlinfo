@@ -1,0 +1,20 @@
+package:
+  name: python-dlinfo
+  version: 1.2.1
+
+source:
+  path: .
+
+requirements:
+  build:
+    - python
+    - setuptools_scm
+  run:
+    - python
+
+build:
+  script: python -m pip install --no-deps --ignore-installed .
+
+test:
+  imports:
+    - dlinfo
