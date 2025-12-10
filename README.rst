@@ -1,5 +1,7 @@
+*deprecated* recommended fork: https://github.com/fphammerle/python-dlinfo
+
 python-dlinfo
-=============
+============
 
 Python wrapper for libc's dlinfo
 
