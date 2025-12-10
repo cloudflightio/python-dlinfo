@@ -1,4 +1,5 @@
-*deprecated* recommended fork: https://github.com/fphammerle/python-dlinfo
+deprecated recommended fork: https://github.com/fphammerle/python-dlinfo
+============
 
 python-dlinfo
 ============
